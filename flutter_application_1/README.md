@@ -1,6 +1,6 @@
 # flutter_application_1
 
-A new Flutter project.
+This is an ECEN403/404 project for developing a Power Outage Education App. 
 
 ## Getting Started
 
