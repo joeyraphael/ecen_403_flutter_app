@@ -1,6 +1,6 @@
 # flutter_application_1
 
-This is an ECEN403 & 404 project for developing a Power Outage Education App. 
+This is an ECEN403/404 project for developing a Power Outage Education App. 
 
 ## Getting Started
 
