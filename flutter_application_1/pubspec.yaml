@@ -23,3 +23,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/placeholder.jpg
+#  fonts:
+#   - family: NameOfFont
+#     fonts:
+#      - asset: fonts/NameOfFont.ttf
