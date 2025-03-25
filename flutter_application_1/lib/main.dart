@@ -1,265 +1,152 @@
-import 'package:english_words/english_words.dart';
+//import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
+import 'high_school_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MaterialApp(
+  home: Home()
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+));
+class Home extends StatelessWidget { //Base page design, Home buttons
+  const Home({super.key});
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child: MaterialApp(
-        title: 'Namer App',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color.fromARGB(125, 141, 11, 39)),
-        ),
-        home: MyHomePage(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Power Outage Education App', style: TextStyle(fontSize: 30, color: Colors.white)),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
       ),
-    );
-  }
-}
-
-class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-
-  void getNext() {
-    current = WordPair.random();
-    notifyListeners();
-  }
-
-  var favorites = <WordPair>[];
-
-  void toggleFavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
-    } else {
-      favorites.add(current);
-    }
-    notifyListeners();
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  var selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    Widget page;
-    switch (selectedIndex) {
-      case 0:
-        page = GeneratorPage();
-      case 1:
-        page = FavoritesPage();
-      case 2:
-        page = NewerPage();
-      case 3:
-        page = CausesPage();
-      default:
-        throw UnimplementedError('no widget for $selectedIndex');
-    }
-
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Scaffold(
-          body: Row(
-            children: [
-              SafeArea(
-                child: NavigationRail(
-                  extended: constraints.maxWidth >= 600,
-                  destinations: [
-                    NavigationRailDestination(
-                      icon: Icon(Icons.home),
-                      label: Text('Home'),
-                    ),
-                    NavigationRailDestination(
-                      icon: Icon(Icons.favorite),
-                      label: Text('Favorites'),
-                    ),
-                    NavigationRailDestination(
-                        icon: Icon(Icons.donut_large),
-                        label: Text('Mitigation Measures')),
-                    NavigationRailDestination(
-                        icon: Icon(Icons.cloud), label: Text('Causes')),
-                  ],
-                  selectedIndex: selectedIndex,
-                  onDestinationSelected: (value) {
-                    setState(() {
-                      selectedIndex = value;
-                    });
-                  },
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  child: page,
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-}
-
-class GeneratorPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var pair = appState.current;
-
-    IconData icon;
-    if (appState.favorites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          BigCard(pair: pair),
-          SizedBox(height: 10),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () {
-                  appState.toggleFavorite();
-                },
-                icon: Icon(icon),
-                label: Text('Like'),
-              ),
-              SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () {
-                  appState.getNext();
-                },
-                child: Text('Next'),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class BigCard extends StatelessWidget {
-  const BigCard({super.key, required this.pair});
-
-  final WordPair pair;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final style = theme.textTheme.displayMedium!.copyWith(
-      color: theme.colorScheme.onPrimary,
-    );
-
-    return Card(
-      color: theme.colorScheme.primary,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Text(
-          pair.asLowerCase,
-          style: style,
-          semanticsLabel: "${pair.first} ${pair.second}",
-        ),
-      ),
-    );
-  }
-}
-
-class FavoritesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    if (appState.favorites.isEmpty) {
-      return Center(child: Text('No favorites yet.'));
-    }
-
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text(
-            'You have '
-            '${appState.favorites.length} favorites:',
-          ),
-        ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
-          ),
-      ],
-    );
-  }
-}
-
-class NewerPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    /*return Container(
-        margin: const EdgeInsets.all(5.0),
-        width: 10.0,
-        height: 20.0,
-        child: Center(child: Text(
-          'Mitigation Measures\n')
-          )); */
-    return Container(
-      color: Colors.pink,
-      child: Column(
-        children: [
-          Card(
-              elevation: 20,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Center(
+            child: Material(
               color: Colors.blue,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  'Mitigation Measures',
-                  textScaler: const TextScaler.linear(2),
+              elevation: 8,
+              borderRadius: BorderRadius.circular(28),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ElementaryPage()),
+                  );
+                },
+                child: Column(
+                  children: [
+                    Ink.image(
+                      image: AssetImage('assets/placeholder.jpg'),
+                      height: 200,
+                      width: 300,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(height: 6),
+                    Text('K-5 Elementary',style: TextStyle(fontSize: 20, color: Colors.white)),
+                  ],
                 ),
-              )),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Card(
-                  color: Colors.amber,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('\u2022 Close your fridge.'),
-                  )),
-            ],
+              ),
+            ),
+          ),
+          Center(
+            child: Material(
+              color: Colors.blue,
+              elevation: 8,
+              borderRadius: BorderRadius.circular(28),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MiddleSchoolPage()),
+                  );
+                },
+                child: Column(
+                  children: [
+                    Ink.image(
+                      image: AssetImage('assets/placeholder.jpg'),
+                      height: 200,
+                      width: 300,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(height: 6),
+                    Text('6-8th Middle School',style: TextStyle(fontSize: 20, color: Colors.white)),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Material(
+              color: Colors.blue,
+              elevation: 8,
+              borderRadius: BorderRadius.circular(28),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HighSchoolPage()),
+                  );
+                },
+                child: Column(
+                  children: [
+                    Ink.image(
+                      image: AssetImage('assets/placeholder.jpg'),
+                      height: 200,
+                      width: 300,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(height: 6),
+                    Text('9-12th High School',style: TextStyle(fontSize: 20, color: Colors.white)),
+                  ],
+                ),
+              ),
+            ),
           )
-        ],
+        ]
+      )
+    );
+  }
+}
+
+class ElementaryPage extends StatelessWidget {
+  const ElementaryPage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('K-5 Elementary Page', style: TextStyle(fontSize: 30, color: Colors.white)),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+      ),
+      body: Center(
+        child: ElevatedButton(onPressed: (){
+          Navigator.pop(context);
+        },
+            child: const Text('Return to Home Page')),
       ),
     );
   }
 }
 
-class CausesPage extends StatelessWidget {
+class MiddleSchoolPage extends StatelessWidget {
+  const MiddleSchoolPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        child: Text(
-            'Contact your utility. They remain active during power outages. Inform them of the situation, and learn if it is a planned outage or not. In San Antonio, this utility is CPS energy.'));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('6-8th Middle School Page', style: TextStyle(fontSize: 30, color: Colors.white)),
+        centerTitle: true,
+        backgroundColor: Colors.blue,
+      ),
+      body: Center(
+        child: ElevatedButton(onPressed: (){
+          Navigator.pop(context);
+        },
+            child: const Text('Return to Home Page')),
+      ),
+    );
   }
 }
