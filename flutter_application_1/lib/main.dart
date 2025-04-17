@@ -22,90 +22,104 @@ class Home extends StatelessWidget { //Base page design, Home buttons
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Center(
-            child: Material(
-              color: Colors.blue,
-              elevation: 8,
-              borderRadius: BorderRadius.circular(28),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ElementaryPage()),
-                  );
-                },
-                child: Column(
-                  children: [
-                    Ink.image(
-                      image: AssetImage('assets/placeholder.jpg'),
-                      height: 200,
-                      width: 300,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(height: 6),
-                    Text('K-5 Elementary',style: TextStyle(fontSize: 20, color: Colors.white)),
-                  ],
+          Spacer(),
+          Flexible(
+            flex: 5,
+            fit: FlexFit.loose,
+            child: Center(
+              child: Material(
+                color: Colors.blue,
+                elevation: 8,
+                borderRadius: BorderRadius.circular(28),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ElementaryPage()),
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Ink.image(
+                        image: AssetImage('assets/placeholder.jpg'),
+                        height: 170,
+                        width: 300,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 6),
+                      Text('K-5 Elementary',style: TextStyle(fontSize: 20, color: Colors.white)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+           ),
+          Spacer(),
+          Flexible(
+            flex: 5,
+            child: Center(
+              child: Material(
+                color: Colors.blue,
+                elevation: 8,
+                borderRadius: BorderRadius.circular(28),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MiddleSchoolPage()),
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Ink.image(
+                        image: AssetImage('assets/placeholder.jpg'),
+                        height: 170,
+                        width: 300,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 6),
+                      Text('6-8th Middle School',style: TextStyle(fontSize: 20, color: Colors.white)),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+           ),
+          Spacer(),
+          Flexible(
+            flex: 5,
+            child: Center(
+              child: Material(
+                color: Colors.blue,
+                elevation: 8,
+                borderRadius: BorderRadius.circular(28),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HighSchoolPage()),
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      Ink.image(
+                        image: AssetImage('assets/placeholder.jpg'),
+                        height: 170,
+                        width: 300,
+                        fit: BoxFit.cover,
+                      ),
+                      SizedBox(height: 6),
+                      Text('9-12th High School',style: TextStyle(fontSize: 20, color: Colors.white)),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-          Center(
-            child: Material(
-              color: Colors.blue,
-              elevation: 8,
-              borderRadius: BorderRadius.circular(28),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MiddleSchoolPage()),
-                  );
-                },
-                child: Column(
-                  children: [
-                    Ink.image(
-                      image: AssetImage('assets/placeholder.jpg'),
-                      height: 200,
-                      width: 300,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(height: 6),
-                    Text('6-8th Middle School',style: TextStyle(fontSize: 20, color: Colors.white)),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Center(
-            child: Material(
-              color: Colors.blue,
-              elevation: 8,
-              borderRadius: BorderRadius.circular(28),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HighSchoolPage()),
-                  );
-                },
-                child: Column(
-                  children: [
-                    Ink.image(
-                      image: AssetImage('assets/placeholder.jpg'),
-                      height: 200,
-                      width: 300,
-                      fit: BoxFit.cover,
-                    ),
-                    SizedBox(height: 6),
-                    Text('9-12th High School',style: TextStyle(fontSize: 20, color: Colors.white)),
-                  ],
-                ),
-              ),
-            ),
-          )
+          Spacer(),
         ]
       )
     );
