@@ -19,58 +19,78 @@ class _HighSchoolPageState extends State<HighSchoolPage> { //Initial page for us
         backgroundColor: Colors.blue,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            color: Colors.blue[200],
-            child: Text('You have likely heard of what a Power Outage is.', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
-          ),
-          SizedBox(width: 20, height: 10),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            color: Colors.blue[200],
-            child: Text('A power outage is a situation where the supply of electricity to a building, area, or entire region is temporarily stopped. ', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
-          ),
-          SizedBox(width: 20, height: 10),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            color: Colors.blue[200],
-            child: Text('This lesson will make you a power outage expert. You will be popular at the parties!', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
-          ),
-          SizedBox(width: 20, height: 10),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            color: Colors.blue[200],
-            child: Text('This lesson begins with an outage scenario of an unknown length.', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
-          ),
-          SizedBox(width: 20, height: 10),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            color: Colors.blue[200],
-            child: Text('Press the button below to continue!', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            child: FloatingActionButton.extended(
-              label: Text('Continue!', style: TextStyle(fontSize: 20, color: Colors.black)),
-              icon: const Icon(Icons.arrow_right),
-              backgroundColor: Colors.green[300],
-              splashColor: Colors.green,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const OutageScenario()),
-                );
-              },
+          Flexible(
+            flex: 6,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              color: Colors.blue[200],
+              child: Text('You have likely heard of what a Power Outage is.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
             ),
           ),
+          Spacer(),
+          Flexible(
+            flex: 10,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              color: Colors.blue[200],
+              child: Text('A power outage is a situation where the supply of electricity to a building, area, or entire region is temporarily stopped. ', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+            ),
+          ),
+          Spacer(),
+          Flexible(
+            flex: 9,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              color: Colors.blue[200],
+              child: Text('This lesson will make you a power outage expert. You will be popular at the parties!', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+            ),
+          ),
+          Spacer(),
+          Flexible(
+            flex: 9,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              color: Colors.blue[200],
+              child: Text('This lesson begins with an outage scenario of an unknown length.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+            ),
+          ),
+          Spacer(),
+          Flexible(
+            flex: 5,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              color: Colors.blue[200],
+              child: Text('Press the button below to continue!     ', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+            ),
+          ),
+          Flexible(
+            flex: 5,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: FloatingActionButton.extended(
+                label: Text('Continue!', style: TextStyle(fontSize: 20, color: Colors.black)),
+                icon: const Icon(Icons.arrow_right),
+                backgroundColor: Colors.green[300],
+                splashColor: Colors.green,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const OutageScenario()),
+                  );
+                },
+              ),
+            ),
+          ),
+          Spacer(),
         ],
       ),
     );
@@ -110,36 +130,39 @@ class _OutageScenarioState extends State<OutageScenario> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Stack( //Classroom image and overlaying buttons
-            children: <Widget>[
-               Center(
-                 child: Image(
-                   image: AssetImage('assets/cartoon_classroom.PNG'),
-                   height: 500,
-                   width: 500,
-                 )
-               ),
-              Container( //computer button
-                padding: const EdgeInsets.all(10.0),
-                margin: const EdgeInsets.fromLTRB(10, 300, 10, 10),
-                width: 75,
-                height: 75,
-                child: FloatingActionButton.extended(
-                    label: const Icon(Icons.computer),
-                    onPressed: () {
-                      setState(() {
-                        if(lessonNum < 3){
-                        }else {
-                          lessonNum = 4;
-                          infoButton = Colors.blue[200];
-                        }
-                      });
-                    }
+          Flexible(
+            flex: 8,
+            child: Stack( //Classroom image and overlaying buttons
+              children: <Widget>[
+                 Center(
+                   child: Image(
+                     image: AssetImage('assets/cartoon_classroom.PNG'),
+                     height: 500,
+                     width: 500,
+                   )
+                 ),
+                Container( //computer button
+                  padding: const EdgeInsets.all(10.0),
+                  margin: const EdgeInsets.fromLTRB(10, 300, 10, 10),
+                  width: 75,
+                  height: 75,
+                  child: FloatingActionButton.extended(
+                      label: const Icon(Icons.computer),
+                      onPressed: () {
+                        setState(() {
+                          if(lessonNum < 3){
+                          }else {
+                            lessonNum = 4;
+                            infoButton = Colors.blue[200];
+                          }
+                        });
+                      }
+                  ),
                 ),
-              ),
+
               Container( //clock button
                 padding: const EdgeInsets.all(10.0),
-                margin: const EdgeInsets.fromLTRB(350, 100, 10, 10),
+                margin: const EdgeInsets.fromLTRB(325, 100, 10, 10),
                 width: 75,
                 height: 75,
                 child: FloatingActionButton.extended(
@@ -155,7 +178,7 @@ class _OutageScenarioState extends State<OutageScenario> {
                     }
                 ),
               ),
-              Container( //clock button
+              Container( //AC button
                 padding: const EdgeInsets.all(10.0),
                 margin: const EdgeInsets.fromLTRB(10, 100, 10, 10),
                 width: 75,
@@ -175,9 +198,11 @@ class _OutageScenarioState extends State<OutageScenario> {
               ),
               Container( //more information button
                 padding: const EdgeInsets.all(10.0),
-                margin: const EdgeInsets.fromLTRB(350, 400, 10, 10),
+                margin: const EdgeInsets.fromLTRB(325, 400, 10, 10),
+                width: 75,
+                height: 75,
                 child: FloatingActionButton.extended(
-                  label: const Icon(Icons.info_outline, color: Colors.black, size: 40),
+                  label: const Icon(Icons.info_outline, color: Colors.black, size: 30),
                   backgroundColor: infoButton,
                   onPressed: () {
                     setState(() { //setState notifies framework that value has changed
@@ -202,37 +227,44 @@ class _OutageScenarioState extends State<OutageScenario> {
               ),
             ],
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            width: 400,
-            height: 200,
-            child: Text(lessonsText[lessonNum], style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            child: FloatingActionButton.extended(
-              label: Text(buttonText, style: TextStyle(fontSize: 20, color: Colors.black)),
-              backgroundColor: buttonColor,
-              onPressed: () {
-                setState(() { //setState notifies framework that value has changed
-                  if(lessonNum == 2){
-                    lessonNum++;
-                    buttonColor = Colors.green[300];
-                    buttonText = 'Continue!';
-                  } else if (lessonNum >= 3){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MoreOutageImpacts()),
-                    );
-                  } else {
-                    lessonNum++;
-                  }
-                });
-              },
+          Flexible(
+            flex: 3,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+              width: 400,
+              height: 200,
+              child: Text(lessonsText[lessonNum], style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
             ),
           ),
+          Flexible(
+            flex: 2,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+              child: FloatingActionButton.extended(
+                label: Text(buttonText, style: TextStyle(fontSize: 20, color: Colors.black)),
+                backgroundColor: buttonColor,
+                onPressed: () {
+                  setState(() { //setState notifies framework that value has changed
+                    if(lessonNum == 2){
+                      lessonNum++;
+                      buttonColor = Colors.green[300];
+                      buttonText = 'Continue!';
+                    } else if (lessonNum >= 3){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const MoreOutageImpacts()),
+                      );
+                    } else {
+                      lessonNum++;
+                    }
+                  });
+                },
+              ),
+            ),
+            ),
         ],
       ),
     );
@@ -398,236 +430,261 @@ class _OutageCausesState extends State<OutageCauses> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: Material(
-                    color: Colors.deepPurple[300],
-                    elevation: 12,
-                    borderRadius: BorderRadius.circular(20),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          if(lessonNum < 2){
-                          }else {
-                            lessonNum = 3;
-                            infoButton = Colors.blue[200];
+            Flexible(
+              flex: 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.fromLTRB(10, 10, 5, 10),
+                    child: Material(
+                      color: Colors.deepPurple[300],
+                      elevation: 12,
+                      borderRadius: BorderRadius.circular(20),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            if(lessonNum < 2){
+                            }else {
+                              lessonNum = 3;
+                              infoButton = Colors.blue[200];
+                            }
+                          });
+                        },
+                        child: Column(
+                          children: [
+                            Ink.image(
+                              image: AssetImage('assets/placeholder.jpg'),
+                              height: 40,
+                              width: 170,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 6),
+                            Text('Natural Disasters',style: TextStyle(fontSize: 19, color: Colors.white)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.fromLTRB(5, 10, 10, 10),
+                    child: Material(
+                      color: Colors.deepPurple[300],
+                      elevation: 12,
+                      borderRadius: BorderRadius.circular(20),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: InkWell(
+                        onTap: () {
+                          if (lessonNum >= 2) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const Animals()),
+                            );
+                          }
+                        },
+                        child: Column(
+                          children: [
+                            Ink.image(
+                              image: AssetImage('assets/placeholder.jpg'),
+                              height: 40,
+                              width: 170,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 6),
+                            Text('Animals',style: TextStyle(fontSize: 19, color: Colors.white)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Flexible(
+              flex: 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.fromLTRB(10, 10, 5, 10),
+                    child: Material(
+                      color: Colors.deepPurple[300],
+                      elevation: 12,
+                      borderRadius: BorderRadius.circular(20),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: InkWell(
+                        onTap: () {
+                          if (lessonNum >= 2) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const HumanError()),
+                            );
+                          }
+                        },
+                        child: Column(
+                          children: [
+                            Ink.image(
+                              image: AssetImage('assets/placeholder.jpg'),
+                              height: 40,
+                              width: 170,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 6),
+                            Text('Human Error',style: TextStyle(fontSize: 19, color: Colors.white)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.fromLTRB(5, 10, 10, 10),
+                    child: Material(
+                      color: Colors.deepPurple[300],
+                      elevation: 12,
+                      borderRadius: BorderRadius.circular(20),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: InkWell(
+                        onTap: () {
+                          if (lessonNum >= 2) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const EquipmentFailure()),
+                            );
+                          }
+                        },
+                        child: Column(
+                          children: [
+                            Ink.image(
+                              image: AssetImage('assets/placeholder.jpg'),
+                              height: 40,
+                              width: 170,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 6),
+                            Text('Equipment Failure',style: TextStyle(fontSize: 20, color: Colors.white)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Flexible(
+              flex: 3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    child: Material(
+                      color: Colors.deepPurple[300],
+                      elevation: 12,
+                      borderRadius: BorderRadius.circular(20),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: InkWell(
+                        onTap: () {
+                          if (lessonNum >= 2) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const PlannedOutages()),
+                            );
+                          }
+                        },
+                        child: Column(
+                          children: [
+                            Ink.image(
+                              image: AssetImage('assets/placeholder.jpg'),
+                              height: 40,
+                              width: 175,
+                              fit: BoxFit.cover,
+                            ),
+                            SizedBox(height: 6),
+                            Text('Planned Outages',style: TextStyle(fontSize: 20, color: Colors.white)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Flexible(
+              flex: 2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container( //more information button; this may be removed for a sized box instead**
+                    padding: const EdgeInsets.all(10.0),
+                    margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                    height: 80,
+                    width: 80,
+                    child: FloatingActionButton.extended(
+                      label: const Icon(Icons.info_outline, color: Colors.black, size: 40),
+                      backgroundColor: infoButton,
+                      onPressed: () {
+                        setState(() { //setState notifies framework that value has changed
+                          if(lessonNum == 3){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const NaturalDisasters()),
+                            );
+                          }
+                          else {
+                            //here, the button should go to a page specific to each button
+                            //most optimal page navigation is probably to have a single page, but easiest to implement is page/object
                           }
                         });
                       },
-                      child: Column(
-                        children: [
-                          Ink.image(
-                            image: AssetImage('assets/placeholder.jpg'),
-                            height: 50,
-                            width: 175,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(height: 6),
-                          Text('Natural Disasters',style: TextStyle(fontSize: 20, color: Colors.white)),
-                        ],
-                      ),
                     ),
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: Material(
-                    color: Colors.deepPurple[300],
-                    elevation: 12,
-                    borderRadius: BorderRadius.circular(20),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: InkWell(
-                      onTap: () {
-                        if (lessonNum >= 2) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const Animals()),
-                          );
-                        }
-                      },
-                      child: Column(
-                        children: [
-                          Ink.image(
-                            image: AssetImage('assets/placeholder.jpg'),
-                            height: 50,
-                            width: 175,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(height: 6),
-                          Text('Animals',style: TextStyle(fontSize: 20, color: Colors.white)),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: Material(
-                    color: Colors.deepPurple[300],
-                    elevation: 12,
-                    borderRadius: BorderRadius.circular(20),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: InkWell(
-                      onTap: () {
-                        if (lessonNum >= 2) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const HumanError()),
-                          );
-                        }
-                      },
-                      child: Column(
-                        children: [
-                          Ink.image(
-                            image: AssetImage('assets/placeholder.jpg'),
-                            height: 50,
-                            width: 175,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(height: 6),
-                          Text('Human Error',style: TextStyle(fontSize: 20, color: Colors.white)),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: Material(
-                    color: Colors.deepPurple[300],
-                    elevation: 12,
-                    borderRadius: BorderRadius.circular(20),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: InkWell(
-                      onTap: () {
-                        if (lessonNum >= 2) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const EquipmentFailure()),
-                          );
-                        }
-                      },
-                      child: Column(
-                        children: [
-                          Ink.image(
-                            image: AssetImage('assets/placeholder.jpg'),
-                            height: 50,
-                            width: 175,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(height: 6),
-                          Text('Equipment Failure',style: TextStyle(fontSize: 20, color: Colors.white)),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: Material(
-                    color: Colors.deepPurple[300],
-                    elevation: 12,
-                    borderRadius: BorderRadius.circular(20),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: InkWell(
-                      onTap: () {
-                        if (lessonNum >= 2) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const PlannedOutages()),
-                          );
-                        }
-                      },
-                      child: Column(
-                        children: [
-                          Ink.image(
-                            image: AssetImage('assets/placeholder.jpg'),
-                            height: 50,
-                            width: 175,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(height: 6),
-                          Text('Planned Outages',style: TextStyle(fontSize: 20, color: Colors.white)),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Container( //more information button; this may be removed for a sized box instead**
-              padding: const EdgeInsets.all(10.0),
-              margin: const EdgeInsets.fromLTRB(350, 10, 10, 10),
-              child: FloatingActionButton.extended(
-                label: const Icon(Icons.info_outline, color: Colors.black, size: 40),
-                backgroundColor: infoButton,
-                onPressed: () {
-                  setState(() { //setState notifies framework that value has changed
-                    if(lessonNum == 3){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const NaturalDisasters()),
-                      );
-                    }
-                    else {
-                      //here, the button should go to a page specific to each button
-                      //most optimal page navigation is probably to have a single page, but easiest to implement is page/object
-                    }
-                  });
-                },
+                ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-              width: 400,
-              height: 200,
-              child: Text(lessonsText[lessonNum], style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
+            Flexible(
+              flex: 6,
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                width: 400,
+                height: 200,
+                child: Text(lessonsText[lessonNum], style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-              child: FloatingActionButton.extended(
-                label: Text(buttonText, style: TextStyle(fontSize: 20, color: Colors.black)),
-                backgroundColor: buttonColor,
-                onPressed: () {
-                  setState(() { //setState notifies framework that value has changed
-                    if(lessonNum == 1){
-                      lessonNum++;
-                      buttonColor = Colors.green[300];
-                      buttonText = 'Continue!';
-                    } else if (lessonNum >= 2){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const IntroMitigationMeasures()),
-                      );
-                    } else {
-                      lessonNum++;
-                    }
-                  });
-                },
+            Flexible(
+              flex: 3,
+              child: Container(
+                padding: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+                child: FloatingActionButton.extended(
+                  label: Text(buttonText, style: TextStyle(fontSize: 20, color: Colors.black)),
+                  backgroundColor: buttonColor,
+                  onPressed: () {
+                    setState(() { //setState notifies framework that value has changed
+                      if(lessonNum == 1){
+                        lessonNum++;
+                        buttonColor = Colors.green[300];
+                        buttonText = 'Continue!';
+                      } else if (lessonNum >= 2){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const IntroMitigationMeasures()),
+                        );
+                      } else {
+                        lessonNum++;
+                      }
+                    });
+                  },
+                ),
               ),
             ),
           ],
@@ -738,132 +795,160 @@ class _OutagePreparationState extends State<OutagePreparation> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: FloatingActionButton.extended(
-              label: Text('1. Get informed', style: TextStyle(fontSize: 24, color: Colors.black)),
-              backgroundColor: Colors.blue[100],
-              onPressed: () {
-                setState(() {
-                  lessonNum = 1;
-                  infoButton = Colors.grey[100];
-                  initialState2 = Colors.blue[100];
-                  if (trackLesson == 0){
-                    trackLesson += 1;
-                  }
-                });
-              },
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: FloatingActionButton.extended(
-              label: Text('2. Have a shelter in mind', style: TextStyle(fontSize: 24, color: Colors.black)),
-              backgroundColor: initialState2,
-              onPressed: () {
-                setState(() {
-                  if(trackLesson >= 1) {
-                    lessonNum = 2;
+          Flexible(
+            flex: 3,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: FloatingActionButton.extended(
+                label: Text('1. Get informed', style: TextStyle(fontSize: 24, color: Colors.black)),
+                backgroundColor: Colors.blue[100],
+                onPressed: () {
+                  setState(() {
+                    lessonNum = 1;
                     infoButton = Colors.grey[100];
-                    initialState3 = Colors.blue[100];
-                    if (trackLesson == 1){
+                    initialState2 = Colors.blue[100];
+                    if (trackLesson == 0){
                       trackLesson += 1;
                     }
-                  }
-                  else{}
-                });
-              },
+                  });
+                },
+              ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: FloatingActionButton.extended(
-              label: Text('3. Have plans for communication', style: TextStyle(fontSize: 24, color: Colors.black)),
-              backgroundColor: initialState3,
-              onPressed: () {
-                setState(() {
-                  if(trackLesson >= 2) {
-                    lessonNum = 3;
-                    infoButton = Colors.grey[100];
-                    initialState4 = Colors.blue[100];
-                    if (trackLesson == 2){
-                      trackLesson += 1;
+          Flexible(
+            flex: 3,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: FloatingActionButton.extended(
+                label: Text('2. Have a shelter in mind', style: TextStyle(fontSize: 24, color: Colors.black)),
+                backgroundColor: initialState2,
+                onPressed: () {
+                  setState(() {
+                    if(trackLesson >= 1) {
+                      lessonNum = 2;
+                      infoButton = Colors.grey[100];
+                      initialState3 = Colors.blue[100];
+                      if (trackLesson == 1){
+                        trackLesson += 1;
+                      }
                     }
-                  }
-                  else{}
-                });
-              },
+                    else{}
+                  });
+                },
+              ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-            child: FloatingActionButton.extended(
-              label: Text('4. Keep an emergency kit', style: TextStyle(fontSize: 24, color: Colors.black)),
-              backgroundColor: initialState4,
-              onPressed: () {
-                setState(() {
-                  if (trackLesson >= 3) {
-                    lessonNum = 4;
-                    infoButton = Colors.blue[100];
-                    if (trackLesson == 3){
-                      trackLesson += 1;
-                      continueButton = Colors.green[200];
-                      continueText = 'Continue!';
+          Flexible(
+            flex: 3,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: FloatingActionButton.extended(
+                label: Text('3. Have plans for communication', style: TextStyle(fontSize: 24, color: Colors.black)),
+                backgroundColor: initialState3,
+                onPressed: () {
+                  setState(() {
+                    if(trackLesson >= 2) {
+                      lessonNum = 3;
+                      infoButton = Colors.grey[100];
+                      initialState4 = Colors.blue[100];
+                      if (trackLesson == 2){
+                        trackLesson += 1;
+                      }
                     }
-                  }
-                  else{}
-                });
-              },
+                    else{}
+                  });
+                },
+              ),
             ),
           ),
-          Container( //more information button
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(350, 10, 10, 10),
-            child: FloatingActionButton.extended(
-              label: const Icon(Icons.info_outline, color: Colors.black, size: 40),
-              backgroundColor: infoButton,
-              onPressed: () {
-                setState(() { //setState notifies framework that value has changed
-                  if(lessonNum == 4){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const EmergencyKit()),
-                    );
-                  }
-                  else {
-                    //here, the button should go to a page specific to each button
-                    //most optimal page navigation is probably to have a single page, but easiest to implement is page/object
-                  }
-                });
-              },
+          Flexible(
+            flex: 3,
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+              child: FloatingActionButton.extended(
+                label: Text('4. Keep an emergency kit', style: TextStyle(fontSize: 24, color: Colors.black)),
+                backgroundColor: initialState4,
+                onPressed: () {
+                  setState(() {
+                    if (trackLesson >= 3) {
+                      lessonNum = 4;
+                      infoButton = Colors.blue[100];
+                      if (trackLesson == 3){
+                        trackLesson += 1;
+                        continueButton = Colors.green[200];
+                        continueText = 'Continue!';
+                      }
+                    }
+                    else{}
+                  });
+                },
+              ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            child: Text(lessonsText[lessonNum], style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
+          Flexible(
+            flex: 3,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container( //more information button
+                  padding: const EdgeInsets.all(10.0),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  height: 80,
+                  width: 80,
+                  child: FloatingActionButton.extended(
+                    label: const Icon(Icons.info_outline, color: Colors.black, size: 40),
+                    backgroundColor: infoButton,
+                    onPressed: () {
+                      setState(() { //setState notifies framework that value has changed
+                        if(lessonNum == 4){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const EmergencyKit()),
+                          );
+                        }
+                        else {
+                          //here, the button should go to a page specific to each button
+                          //most optimal page navigation is probably to have a single page, but easiest to implement is page/object
+                        }
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            child: FloatingActionButton.extended(
-              label: Text(continueText, style: TextStyle(fontSize: 20, color: Colors.black)),
-              backgroundColor: continueButton,
-              onPressed: () {
-                setState(() { //setState notifies framework that value has changed
-                  if(trackLesson == 4) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DuringOutage()),
-                    );
-                  }
-                });
-              },
+          Flexible(
+            flex: 8,
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+              child: Text(lessonsText[lessonNum], style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+            ),
+          ),
+          Flexible(
+            flex: 3,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+              child: FloatingActionButton.extended(
+                label: Text(continueText, style: TextStyle(fontSize: 20, color: Colors.black)),
+                backgroundColor: continueButton,
+                onPressed: () {
+                  setState(() { //setState notifies framework that value has changed
+                    if(trackLesson == 4) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const DuringOutage()),
+                      );
+                    }
+                  });
+                },
+              ),
             ),
           ),
         ],
@@ -892,27 +977,26 @@ class _DuringOutageState extends State<DuringOutage> {
         children: <Widget>[
           Container(
             padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             child: Text('During an outage, be sure to keep the following in mind:', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
           ),
-          SizedBox(width: 20, height: 10),
           Container(
             padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             color: Colors.blue[100],
             child: Text('Keep freezers and refrigerators closed.', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
           ),
           SizedBox(width: 20, height: 10),
           Container(
             padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             color: Colors.blue[100],
             child: Text('Use a generator, as long as it is outdoors.', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
           ),
           SizedBox(width: 20, height: 10),
           Container(
             padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+            margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             color: Colors.blue[100],
             child: Text('Disconnect electronics and appliances to avoid electrical surges after the power returns.', style: TextStyle(fontSize: 25, color: Colors.blue[1000])),
           ),
@@ -1107,7 +1191,7 @@ class _PlannedOutageState extends State<PlannedOutage> {
             children: <Widget>[
               Container(
                 padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                margin: const EdgeInsets.fromLTRB(5, 10, 0, 10),
                 child: FloatingActionButton.extended(
                   label: Text(boxA),
                   onPressed: () {
@@ -1132,7 +1216,7 @@ class _PlannedOutageState extends State<PlannedOutage> {
               ),
               Container(
                 padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                margin: const EdgeInsets.fromLTRB(5, 10, 0, 10),
                 child: FloatingActionButton.extended(
                   label: Text(boxB),
                   onPressed: () {
@@ -1160,7 +1244,7 @@ class _PlannedOutageState extends State<PlannedOutage> {
             children: <Widget>[
               Container(
                 padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                margin: const EdgeInsets.fromLTRB(5, 10, 0, 10),
                 child: FloatingActionButton.extended(
                   label: Text(boxC),
                   onPressed: () {
@@ -1183,7 +1267,7 @@ class _PlannedOutageState extends State<PlannedOutage> {
               ),
               Container(
                 padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                margin: const EdgeInsets.fromLTRB(5, 10, 0, 10),
                 child: FloatingActionButton.extended(
                   label: Text(boxD),
                   onPressed: () {
@@ -1411,33 +1495,48 @@ class NaturalDisasters extends StatelessWidget { //natural disasters tab, from c
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-            child: Text('Natural disasters can cause equipment failure. This is anywhere from power plants failing, lightning striking the power grid, lines falling, and more.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 5,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+              child: Text('Natural disasters can cause equipment failure. This is anywhere from power plants failing, lightning striking the power grid, lines falling, and more.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-            child: Text('One such example is Winter Storm Uri. The cold had caused many power plants to "trip", which meant there was not enough power generation on the grid leading to rolling outages.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 5,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+              child: Text('One such example is Winter Storm Uri. The cold had caused many power plants to "trip", which meant there was not enough power generation on the grid leading to rolling outages.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Center(
-              child: Image(
-                image: AssetImage('assets/placeholder.jpg'),
-                height: 250,
-                width: 400,
-              )
+          Flexible(
+            flex: 5,
+            child: Center(
+                child: Image(
+                  image: AssetImage('assets/placeholder.jpg'),
+                  height: 250,
+                  width: 400,
+                )
+            ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            child: Text('Outages caused by these tend to be the most severe as they impact the grid the most. They can last anywhere from a few minutes to several weeks.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 5,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
+              child: Text('Outages caused by these tend to be the most severe as they impact the grid the most. They can last anywhere from a few minutes to several weeks.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Center(
-            child: ElevatedButton(onPressed: (){
-              Navigator.pop(context);
-            },
-                child: const Text('Return to Previous Page')),
+          Flexible(
+            flex: 2,
+            child: Center(
+              child: ElevatedButton(onPressed: (){
+                Navigator.pop(context);
+              },
+                  child: const Text('Return to Previous Page')),
+            ),
           ),
         ],
       ),
@@ -1459,33 +1558,48 @@ class Animals extends StatelessWidget { //animals tab, from causes of outages
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-            child: Text('Animals often use power lines for different reasons. Squirrels may use them as "highways", birds may use them as a place to perch, and more.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 5,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+              child: Text('Animals often use power lines for different reasons. Squirrels may use them as "highways", birds may use them as a place to perch, and more.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-            child: Text('This tends to be harmless as they are not "completing the circuit." However, when they touch another wire, they will create a "short circuit," where electricity passes through their body. This has adverse effects on the grid.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 6,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Text('This tends to be harmless as they are not "completing the circuit." However, when they touch another wire, they will create a "short circuit," where electricity passes through their body. This has adverse effects on the grid.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Center(
-              child: Image(
-                image: AssetImage('assets/placeholder.jpg'),
-                height: 250,
-                width: 400,
-              )
+          Flexible(
+            flex: 5,
+            child: Center(
+                child: Image(
+                  image: AssetImage('assets/placeholder.jpg'),
+                  height: 200,
+                  width: 400,
+                )
+            ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            child: Text('Outages caused by short circuits tend to last a few seconds to a minute, as current power grids have protection against these cases.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 6,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Text('Outages caused by short circuits tend to last a few seconds to a minute, as current power grids have protection against these cases. In more severe cases, they may last longer.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Center(
-            child: ElevatedButton(onPressed: (){
-              Navigator.pop(context);
-            },
-                child: const Text('Return to Previous Page')),
+          Flexible(
+            flex: 2,
+            child: Center(
+              child: ElevatedButton(onPressed: (){
+                Navigator.pop(context);
+              },
+                  child: const Text('Return to Previous Page')),
+            ),
           ),
         ],
       ),
@@ -1507,33 +1621,48 @@ class HumanError extends StatelessWidget { //human error tab, from causes of out
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-            child: Text('Although we all acknowledge power lines as dangerous, accidents are always prone to happen. This is from miscalculations, car accidents, and more.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 5,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Text('Although we all acknowledge power lines as dangerous, accidents are always prone to happen. This is from miscalculations, car accidents, and more.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-            child: Text('Construction may lead to power line poles falling over or lines being cut. It may lead to objects, such as trees, dropping on the lines and causing shortages.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 6,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 5),
+              child: Text('Construction may lead to power line poles falling over or lines being cut. It may lead to objects, such as trees, dropping on the lines and causing shortages.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Center(
-              child: Image(
-                image: AssetImage('assets/placeholder.jpg'),
-                height: 250,
-                width: 400,
-              )
+          Flexible(
+            flex: 5,
+            child: Center(
+                child: Image(
+                  image: AssetImage('assets/placeholder.jpg'),
+                  height: 200,
+                  width: 400,
+                )
+            ),
           ),
-          Container(
-            padding: const EdgeInsets.all(10.0),
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            child: Text('Outages caused by short circuits tend to last a few seconds to a minute, while outages caused by dropping objects staying there may have to be done manually so may last a few days.', style: TextStyle(fontSize: 22, color: Colors.blue[1000])),
+          Flexible(
+            flex: 6,
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+              child: Text('Outages caused by short circuits tend to last a few seconds to a minute, while outages caused by dropping objects staying there may have to be done manually so may last a few days.', style: TextStyle(fontSize: 21, color: Colors.blue[1000])),
+            ),
           ),
-          Center(
-            child: ElevatedButton(onPressed: (){
-              Navigator.pop(context);
-            },
-                child: const Text('Return to Previous Page')),
+          Flexible(
+            flex: 2,
+            child: Center(
+              child: ElevatedButton(onPressed: (){
+                Navigator.pop(context);
+              },
+                  child: const Text('Return to Previous Page')),
+            ),
           ),
         ],
       ),
