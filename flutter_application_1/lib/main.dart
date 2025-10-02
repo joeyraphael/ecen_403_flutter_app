@@ -128,24 +128,5 @@ class Home extends StatelessWidget { //Base page design, Home buttons
   }
 }
 
-// class ElementaryPage extends StatelessWidget {
-//   const ElementaryPage({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('K-5 Elementary Page', style: TextStyle(fontSize: 30, color: Colors.white)),
-//         centerTitle: true,
-//         backgroundColor: Colors.blue,
-//       ),
-//       body: Center(
-//         child: ElevatedButton(onPressed: (){
-//           Navigator.pop(context);
-//         },
-//             child: const Text('Return to Home Page')),
-//       ),
-//     );
-//   }
-// }
 
 
