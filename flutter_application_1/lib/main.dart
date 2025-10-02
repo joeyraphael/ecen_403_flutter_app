@@ -1,7 +1,9 @@
 //import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 //import 'package:provider/provider.dart';
+import 'middle_school_page.dart';
 import 'high_school_page.dart';
+import 'elementary_page.dart';
 
 
 void main() => runApp(MaterialApp(
@@ -126,42 +128,24 @@ class Home extends StatelessWidget { //Base page design, Home buttons
   }
 }
 
-class ElementaryPage extends StatelessWidget {
-  const ElementaryPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('K-5 Elementary Page', style: TextStyle(fontSize: 30, color: Colors.white)),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-      ),
-      body: Center(
-        child: ElevatedButton(onPressed: (){
-          Navigator.pop(context);
-        },
-            child: const Text('Return to Home Page')),
-      ),
-    );
-  }
-}
+// class ElementaryPage extends StatelessWidget {
+//   const ElementaryPage({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('K-5 Elementary Page', style: TextStyle(fontSize: 30, color: Colors.white)),
+//         centerTitle: true,
+//         backgroundColor: Colors.blue,
+//       ),
+//       body: Center(
+//         child: ElevatedButton(onPressed: (){
+//           Navigator.pop(context);
+//         },
+//             child: const Text('Return to Home Page')),
+//       ),
+//     );
+//   }
+// }
 
-class MiddleSchoolPage extends StatelessWidget {
-  const MiddleSchoolPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('6-8th Middle School Page', style: TextStyle(fontSize: 30, color: Colors.white)),
-        centerTitle: true,
-        backgroundColor: Colors.blue,
-      ),
-      body: Center(
-        child: ElevatedButton(onPressed: (){
-          Navigator.pop(context);
-        },
-            child: const Text('Return to Home Page')),
-      ),
-    );
-  }
-}
+
