@@ -1,20 +1,20 @@
-﻿using System.Collections; // unity stuff
-using System.Collections.Generic; // lists
-using UnityEngine; // engine stuff
+﻿using System.Collections; 
+using System.Collections.Generic; 
+using UnityEngine; 
 
 // this basically handles switching sprites when the player/NPC walks
 public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] List<Sprite> walkDownSprites;  // frames for walking down
-    [SerializeField] List<Sprite> walkUpSprites;    // frames for walking up
-    [SerializeField] List<Sprite> walkRightSprites; // frames for walking right
-    [SerializeField] List<Sprite> walkLeftSprites;  // frames for walking left
+    [SerializeField] List<Sprite> walkUpSprites;    
+    [SerializeField] List<Sprite> walkRightSprites; 
+    [SerializeField] List<Sprite> walkLeftSprites;  
     [SerializeField] FacingDirection defaultDirection = FacingDirection.Down; // idle dir
 
     // movement values the controller sets
-    public float MoveX { get; set; } // horizontal (-1 left, 1 right)
-    public float MoveY { get; set; } // vertical
-    public bool IsMoving { get; set; } // if char is walking rn
+    public float MoveX { get; set; } 
+    public float MoveY { get; set; } 
+    public bool IsMoving { get; set; } 
 
     // the animators that flip thru sprite frames
     SpriteAnimator walkDownAnim;
@@ -23,7 +23,7 @@ public class CharacterAnimator : MonoBehaviour
     SpriteAnimator walkLeftAnim;
 
     SpriteAnimator currentAnim; // whichever animation we're using rn
-    bool wasPreviouslyMoving; // so we know when to restart animation
+    bool wasPreviouslyMoving; 
 
     // reference to spriteRenderer in scene
     SpriteRenderer spriteRenderer;

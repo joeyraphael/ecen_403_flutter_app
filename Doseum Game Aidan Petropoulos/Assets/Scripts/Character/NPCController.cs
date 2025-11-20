@@ -1,6 +1,6 @@
-﻿using System.Collections; // unity stuff
-using System.Collections.Generic; // lists
-using UnityEngine; // engine things
+﻿using System.Collections; 
+using System.Collections.Generic; 
+using UnityEngine; 
 
 // this handles NPCs (walking around + talking)
 public class NPCController : MonoBehaviour, Interactable
@@ -9,9 +9,9 @@ public class NPCController : MonoBehaviour, Interactable
     [SerializeField] List<Vector2> movementPattern; // little walk path
     [SerializeField] float timeBetweenPattern; // how long npc sits before next step
 
-    NPCState state; // idle/walking/dialog
+    NPCState state; 
     float idleTimer = 0f; // counts how long npc been not moving
-    int currentPattern = 0; // which step in the pattern
+    int currentPattern = 0; 
 
     Character character; // npc's character script
 
@@ -25,19 +25,19 @@ public class NPCController : MonoBehaviour, Interactable
         // only talk if npc not already busy doing something
         if (state == NPCState.Idle)
         {
-            state = NPCState.Dialog; // mark in dialog
-            character.LookTowards(initiator.position); // face the player
+            state = NPCState.Dialog; 
+            character.LookTowards(initiator.position); 
 
             // show dialog
             StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () => {
                 // callback when dialog ends
-                idleTimer = 0f; // reset idle timer
-                state = NPCState.Idle; // back to chilling
+                idleTimer = 0f; 
+                state = NPCState.Idle;
             }));
         }
         else
         {
-            // npc busy, do nothing lol
+            
         }
     }
 
@@ -46,13 +46,13 @@ public class NPCController : MonoBehaviour, Interactable
         // only move if npc not talking or something
         if (state == NPCState.Idle)
         {
-            idleTimer += Time.deltaTime; // count idle time
+            idleTimer += Time.deltaTime; 
 
-            if (idleTimer > timeBetweenPattern) // time to move a step
+            if (idleTimer > timeBetweenPattern) 
             {
                 idleTimer = 0f;
                 if (movementPattern.Count > 0) // only walk if pattern exists
-                    StartCoroutine(Walk()); // do the walk
+                    StartCoroutine(Walk()); 
             }
         }
 
@@ -63,9 +63,9 @@ public class NPCController : MonoBehaviour, Interactable
     {
         state = NPCState.Walking; // mark npc is walking
 
-        var oldPos = transform.position; // save old pos so we know if we actually moved
+        var oldPos = transform.position; 
 
-        yield return character.Move(movementPattern[currentPattern]); // actually walk the step
+        yield return character.Move(movementPattern[currentPattern]); 
 
         // if npc moved, go to next step in pattern
         if (transform.position != oldPos)

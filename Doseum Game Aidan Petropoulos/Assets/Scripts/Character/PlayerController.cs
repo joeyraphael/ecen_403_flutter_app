@@ -1,22 +1,22 @@
-﻿using System; // unity stuff
-using System.Collections; // more unity stuff
-using System.Collections.Generic; // lists n stuff
-using System.Linq; // prob dont even use this tbh
-using UnityEngine; // game engine
+﻿using System; 
+using System.Collections; 
+using System.Collections.Generic; 
+using System.Linq; 
+using UnityEngine; 
 
 
 // this script controls the player moving, touching, interacting, saving
 public class PlayerController : MonoBehaviour, ISavable
 {
     public Joystick joystick;   // joystick for phone
-    [SerializeField] string name; // save/load name thing
-    [SerializeField] Sprite sprite; // player picture maybe later
+    [SerializeField] string name; 
+    [SerializeField] Sprite sprite; 
 
-    private Vector2 input; // what direction im moving
-    private Character character; // reference to the character script
-    private Vector2 touchStartPos; // where finger started press
-    private bool isTouching; // if finger is down
-    private float touchInteractThreshold = 0.1f; // if swipe tiny = interact
+    private Vector2 input; 
+    private Character character; 
+    private Vector2 touchStartPos; 
+    private bool isTouching; 
+    private float touchInteractThreshold = 0.1f; 
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour, ISavable
 
     public void HandleUpdate()
     {
-        if (Camera.main == null) // bro if no camera then idk
+        if (Camera.main == null) 
             Debug.LogError("no camera??");
 
         // if im not already mid-move
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour, ISavable
         isTouching = false; // no longer touching
         float dist = (pos - touchStartPos).magnitude; // swipe length
 
-        if (dist < touchInteractThreshold) // super small = tap
+        if (dist < touchInteractThreshold) 
             Interact(); // treat tap as interact
 
         input = Vector2.zero; // reset input
@@ -125,8 +125,8 @@ public class PlayerController : MonoBehaviour, ISavable
         // after moving, check if stepped on trigger area
         var hits = Physics2D.OverlapCircleAll(
             transform.position - new Vector3(0, character.OffsetY), // correct hitbox pos
-            0.2f, // small circle
-            GameLayers.i.TriggerableLayers); // only layers that can be triggered
+            0.2f, 
+            GameLayers.i.TriggerableLayers); 
 
         // check all hits
         foreach (var h in hits)
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour, ISavable
             var trig = h.GetComponent<IPlayerTriggerable>(); // things player can trigger
             if (trig != null)
             {
-                trig.OnPlayerTriggered(this); // run their trigger code
+                trig.OnPlayerTriggered(this); 
                 break; // only do one
             }
         }
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour, ISavable
 
         var hit = Physics2D.OverlapCircle(p, 0.3f, GameLayers.i.InteractableLayer); // check if smth there
         if (hit != null)
-            hit.GetComponent<Interactable>()?.Interact(transform); // call interact func
+            hit.GetComponent<Interactable>()?.Interact(transform); 
     }
 
     public object CaptureState()
@@ -162,12 +162,12 @@ public class PlayerController : MonoBehaviour, ISavable
     public void RestoreState(object state)
     {
         var save = (PlayerSaveData)state; // load save data
-        var pos = save.position; // saved pos
+        var pos = save.position; 
         transform.position = new Vector3(pos[0], pos[1]); // set pos back
     }
 
-    public string Name => name; // return name
-    public Sprite Sprite => sprite; // return sprite
+    public string Name => name; 
+    public Sprite Sprite => sprite; 
     public Character Character => character; // return char
 }
 

@@ -1,22 +1,22 @@
-﻿using System; // for Action
-using System.Collections; // for IEnumerator
+﻿using System; 
+using System.Collections; 
 using System.Collections.Generic;
-using UnityEngine; // unity engine stuff
+using UnityEngine; 
 
-// this script handles actual moving on grid + blocking checks + animation directions
+// this script handles actual moving on grid, blocking checks, animation directions
 public class Character : MonoBehaviour
 {
     public float moveSpeed; // how fast character walks
-    public bool IsMoving { get; private set; } // if walking rn
+    public bool IsMoving { get; private set; } 
     public float OffsetY { get; private set; } = .1f; // little offset so sprite sits nice on tile
 
     CharacterAnimator animator; // ref to animator
-    [SerializeField] private LayerMask solidObjectsLayer; // walls/objects that block
+    [SerializeField] private LayerMask solidObjectsLayer; 
     [SerializeField] private LayerMask interactableLayer; // stuff that also blocks (npcs etc)
 
     private void Awake()
     {
-        animator = GetComponent<CharacterAnimator>(); // grab animator
+        animator = GetComponent<CharacterAnimator>(); 
         SetPositionAndSnapToTile(transform.position); // snap starting pos to tile grid
     }
 
@@ -57,27 +57,27 @@ public class Character : MonoBehaviour
 
         IsMoving = true; // mark moving
 
-        float tolerance = 0.01f; // how close we need to be to say “done”
+        float tolerance = 0.01f; 
         float timeout = 1.0f; // safety timeout so character doesnt freeze
-        float elapsed = 0f; // how long we've been moving
+        float elapsed = 0f; 
 
-        // move until we reach tile
+        // move until I reach tile
         while ((targetPos - transform.position).sqrMagnitude > tolerance * tolerance)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             elapsed += Time.deltaTime;
 
-            if (elapsed > timeout) break; // just in case
+            if (elapsed > timeout) break; 
 
-            yield return null; // wait 1 frame
+            yield return null; 
         }
 
         transform.position = targetPos; // make sure exactly on tile
 
-        IsMoving = false; // done walking
+        IsMoving = false; 
         animator.IsMoving = false; // stop anim
 
-        OnMoveOver?.Invoke(); // call callback (npc triggers etc)
+        OnMoveOver?.Invoke(); 
     }
 
     public void HandleUpdate()
@@ -90,18 +90,18 @@ public class Character : MonoBehaviour
     private bool IsPathClear(Vector3 targetPos)
     {
         var diff = targetPos - transform.position; // dist to check
-        var dir = diff.normalized; // swipe direction
+        var dir = diff.normalized; 
 
         // raycast from current tile to next tile
         if (Physics2D.Raycast(transform.position, dir, diff.magnitude, solidObjectsLayer | interactableLayer))
-            return false; // wall hit
+            return false; 
 
-        return true; // good to move
+        return true; 
     }
 
     public bool IsWalkable(Vector3 targetPos)
     {
-        // rn everything is walkable bc I didnt need this yet lol
+        // rn everything is walkable bc I didnt need this yet 
         return true;
     }
 
@@ -123,5 +123,5 @@ public class Character : MonoBehaviour
         }
     }
 
-    public CharacterAnimator Animator => animator; // getter for animator
+    public CharacterAnimator Animator => animator; 
 }
