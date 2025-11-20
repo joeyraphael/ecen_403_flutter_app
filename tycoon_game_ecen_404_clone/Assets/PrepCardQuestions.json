@@ -1,0 +1,242 @@
+[
+  {
+    "question": "What’s the first thing you should do when a power outage occurs?",
+    "answerA": "Panic",
+    "answerB": "Use candles for light",
+    "answerC": "Check if the outage is only in your home or the neighborhood",
+    "answerD": "Turn on all your appliances",
+    "correctAnswer": "answerC"
+  },
+  {
+    "question": "Why should you unplug appliances during a power outage?",
+    "answerA": "To save electricity",
+    "answerB": "To prevent damage from power surges when power returns",
+    "answerC": "To make room for emergency supplies",
+    "answerD": "To keep them clean",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "Which of the following is unsafe to use indoors during a power outage?",
+    "answerA": "Flashlight",
+    "answerB": "Gas-powered generator",
+    "answerC": "Battery-powered radio",
+    "answerD": "Cell phone",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "How long can food safely stay in a closed refrigerator during a power outage?",
+    "answerA": "1 hour",
+    "answerB": "4 hours",
+    "answerC": "12 hours",
+    "answerD": "24 hours",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "What’s the safest way to use a generator?",
+    "answerA": "Indoors to stay warm",
+    "answerB": "In a garage with the door open",
+    "answerC": "Outside, at least 20 feet from windows and doors",
+    "answerD": "In your basement",
+    "correctAnswer": "answerC"
+  },
+  {
+    "question": "If you see a downed power line after a storm, what should you do?",
+    "answerA": "Move it out of the way",
+    "answerB": "Call the power company immediately and stay far away",
+    "answerC": "Pour water on it",
+    "answerD": "Step over it carefully",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "Which item is essential to have in an emergency power outage kit?",
+    "answerA": "Fresh batteries",
+    "answerB": "A hair dryer",
+    "answerC": "A gaming console",
+    "answerD": "Lawn mower",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "What should you avoid opening during a power outage to keep food cold?",
+    "answerA": "Front door",
+    "answerB": "Refrigerator and freezer doors",
+    "answerC": "Windows",
+    "answerD": "Microwave",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "How can you get updates about the outage if your power and internet are out?",
+    "answerA": "Use a battery-powered or hand-crank radio",
+    "answerB": "Wait until the power comes back",
+    "answerC": "Go outside and shout for information",
+    "answerD": "Use your TV",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "Why should you never run your car inside a closed garage for warmth during a power outage?",
+    "answerA": "It wastes gas",
+    "answerB": "It can cause deadly carbon monoxide poisoning",
+    "answerC": "It will damage the car",
+    "answerD": "It’s too noisy",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "When using candles, what’s an important safety tip?",
+    "answerA": "Leave them unattended",
+    "answerB": "Place them near curtains for better light reflection",
+    "answerC": "Keep them away from flammable materials",
+    "answerD": "Hold them while sleeping",
+    "correctAnswer": "answerC"
+  },
+  {
+    "question": "What is a power surge?",
+    "answerA": "A drop in voltage",
+    "answerB": "An increase in electrical current that can damage devices",
+    "answerC": "A blackout",
+    "answerD": "A generator overload",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "How can you keep your phone charged during a long outage?",
+    "answerA": "Plug it into the wall",
+    "answerB": "Use a portable power bank or car charger",
+    "answerC": "Use a microwave",
+    "answerD": "You can’t",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "Which of these is a good long-term preparation step for power outages?",
+    "answerA": "Stockpile fresh milk",
+    "answerB": "Keep flashlights and extra batteries ready",
+    "answerC": "Buy more extension cords",
+    "answerD": "Leave lights on all night",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "What should you do if you rely on electrically powered medical devices during an outage?",
+    "answerA": "Do nothing",
+    "answerB": "Move to the basement",
+    "answerC": "Notify your utility company and have a backup power plan",
+    "answerD": "Use candles for light",
+    "correctAnswer": "answerC"
+  },
+  {
+    "question": "What is a blackout?",
+    "answerA": "A total loss of electricity in an area",
+    "answerB": "A flickering of lights",
+    "answerC": "A type of generator",
+    "answerD": "A temporary dimming of lights",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "Which device helps protect electronics from sudden power surges?",
+    "answerA": "Extension cord",
+    "answerB": "Surge protector",
+    "answerC": "Power strip",
+    "answerD": "USB adapter",
+    "correctAnswer": "answerB"
+  },
+  {
+    "question": "What should you do first when the power goes out?",
+    "answerA": "Check your circuit breaker or fuse box",
+    "answerB": "Turn on the oven for light",
+    "answerC": "Run outside",
+    "answerD": "Light fireworks",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "What is the main reason for keeping flashlights by your bed?",
+    "answerA": "For light if the power goes out at night",
+    "answerB": "To find your shoes",
+    "answerC": "To scare pets",
+    "answerD": "To read comics",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "Why should you keep cash at home during an outage?",
+    "answerA": "ATMs and card machines may not work",
+    "answerB": "For decoration",
+    "answerC": "To buy candy",
+    "answerD": "To save space",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "What kind of battery lasts the longest in flashlights?",
+    "answerA": "Lithium",
+    "answerB": "Zinc",
+    "answerC": "Alkaline",
+    "answerD": "Nickel",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "Which power source works during an outage?",
+    "answerA": "Solar battery backup",
+    "answerB": "Electric oven",
+    "answerC": "Ceiling fan",
+    "answerD": "Refrigerator",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "What can too much demand on the power grid cause?",
+    "answerA": "Blackouts",
+    "answerB": "Faster internet",
+    "answerC": "More light",
+    "answerD": "Colder weather",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "Why should you stay calm during a power outage?",
+    "answerA": "It helps you think clearly and stay safe",
+    "answerB": "It makes the power return faster",
+    "answerC": "It charges your phone",
+    "answerD": "It prevents rain",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "Which of the following can cause a power outage?",
+    "answerA": "Lightning strikes and storms",
+    "answerB": "Rainbows",
+    "answerC": "Sunny days",
+    "answerD": "Full moons",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "What’s a brownout?",
+    "answerA": "A partial drop in voltage that dims lights",
+    "answerB": "A complete loss of power",
+    "answerC": "A thunderstorm",
+    "answerD": "A type of generator",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "Why are power lines dangerous?",
+    "answerA": "They carry high voltage electricity",
+    "answerB": "They are loud",
+    "answerC": "They are slippery",
+    "answerD": "They move fast",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "What is a safe way to cook during an outage?",
+    "answerA": "Use a camp stove outdoors",
+    "answerB": "Use your oven indoors",
+    "answerC": "Cook over candles",
+    "answerD": "Use a microwave",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "Why might hospitals have backup generators?",
+    "answerA": "To keep vital medical equipment running",
+    "answerB": "To keep lights decorative",
+    "answerC": "To save food",
+    "answerD": "To play music",
+    "correctAnswer": "answerA"
+  },
+  {
+    "question": "What should you do after power is restored?",
+    "answerA": "Plug in appliances one at a time",
+    "answerB": "Turn everything on at once",
+    "answerC": "Leave all lights off for 24 hours",
+    "answerD": "Reset your circuit breakers manually",
+    "correctAnswer": "answerA"
+  }
+]
