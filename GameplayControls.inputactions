@@ -1,0 +1,64 @@
+{
+    "name": "GameplayControls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "c2a314d9-3719-4a38-b465-9566a32ce70a",
+            "actions": [
+                {
+                    "name": "touch phase",
+                    "type": "Value",
+                    "id": "64f00016-91db-4c8b-a0c7-9ac41f1d7e0c",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "touch position",
+                    "type": "Value",
+                    "id": "69a9f70d-197a-418b-8133-1090d74e99bf",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b29d9e45-e0c5-4026-9655-16244eafe81f",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "touch phase",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7ff4b2a-08ef-4e17-9608-0d98d0c98423",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "touch position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "GameplayController",
+            "bindingGroup": "GameplayController",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
