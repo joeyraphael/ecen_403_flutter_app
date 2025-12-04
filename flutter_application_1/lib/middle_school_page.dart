@@ -7,10 +7,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 WebViewEnvironment? webViewEnvironment;
 
-Future main() async {
+Future main() async {//Initialize app
   WidgetsFlutterBinding.ensureInitialized();
 
-  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) {
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) { //checks if Windows platform
     final availableVersion = await WebViewEnvironment.getAvailableVersion();
     assert(
     availableVersion != null,
@@ -22,21 +22,21 @@ Future main() async {
     );
   }
 
-  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
+  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {//checks if Android platform
     await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
   }
 
   runApp(const MaterialApp(home: MiddleSchoolPage()));
 }
 
-class MiddleSchoolPage extends StatefulWidget {
+class MiddleSchoolPage extends StatefulWidget { //stateful widget (changes state) for Middle School Game
   const MiddleSchoolPage({super.key});
 
   @override
   State<MiddleSchoolPage> createState() => _MiddleSchoolPageState();
 }
 
-class _MiddleSchoolPageState extends State<MiddleSchoolPage> {
+class _MiddleSchoolPageState extends State<MiddleSchoolPage> { //controller in page; allows for debug, reload, load URL
   final GlobalKey webViewKey = GlobalKey();
 
   InAppWebViewController? webViewController;
@@ -54,7 +54,7 @@ class _MiddleSchoolPageState extends State<MiddleSchoolPage> {
   final urlController = TextEditingController();
 
   @override
-  void initState() {
+  void initState() { //Pull to refresh page
     super.initState();
 
     pullToRefreshController =
@@ -80,24 +80,22 @@ class _MiddleSchoolPageState extends State<MiddleSchoolPage> {
     );
   }
 
+  @override
   void dispose() {
     // Reset to Default Orientation
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
     ]);
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { //set to preferred orientation: landscape
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-    return Scaffold(
+    return Scaffold( //Layout, opens WebView page
       appBar: AppBar(title: const Text("Middle School Game")),
       body: SafeArea(
         child: Column(
@@ -105,30 +103,30 @@ class _MiddleSchoolPageState extends State<MiddleSchoolPage> {
             Expanded(
               child: Stack(
                 children: [
-                  InAppWebView(
+                  InAppWebView( //Main WebView Widget
                     key: webViewKey,
                     webViewEnvironment: webViewEnvironment,
-                    initialUrlRequest: URLRequest(
+                    initialUrlRequest: URLRequest( //URL to open
                       url: WebUri("https://joeyraphtamu.itch.io/test-project"),
                     ),
                     initialSettings: settings,
                     pullToRefreshController: pullToRefreshController,
-                    onWebViewCreated: (controller) {
+                    onWebViewCreated: (controller) { //reload controller
                       webViewController = controller;
                     },
-                    onLoadStart: (controller, url) {
+                    onLoadStart: (controller, url) { //updates URL and URLcontroller
                       setState(() {
                         this.url = url.toString();
                         urlController.text = this.url;
                       });
                     },
-                    onPermissionRequest: (controller, request) async {
+                    onPermissionRequest: (controller, request) async { //asks for permissions
                       return PermissionResponse(
                         resources: request.resources,
                         action: PermissionResponseAction.GRANT,
                       );
                     },
-                    shouldOverrideUrlLoading: (
+                    shouldOverrideUrlLoading: ( //for all URLs
                         controller,
                         navigationAction,
                         ) async {
@@ -153,14 +151,14 @@ class _MiddleSchoolPageState extends State<MiddleSchoolPage> {
 
                       return NavigationActionPolicy.ALLOW;
                     },
-                    onLoadStop: (controller, url) async {
+                    onLoadStop: (controller, url) async { //updates URL after finished loading
                       pullToRefreshController?.endRefreshing();
                       setState(() {
                         this.url = url.toString();
                         urlController.text = this.url;
                       });
                     },
-                    onReceivedError: (controller, request, error) {
+                    onReceivedError: (controller, request, error) { //catches loading errors
                       pullToRefreshController?.endRefreshing();
                     },
                     onProgressChanged: (controller, progress) {
@@ -172,19 +170,19 @@ class _MiddleSchoolPageState extends State<MiddleSchoolPage> {
                         urlController.text = url;
                       });
                     },
-                    onUpdateVisitedHistory: (controller, url, androidIsReload) {
+                    onUpdateVisitedHistory: (controller, url, androidIsReload) { //keeps state synced with URL
                       setState(() {
                         this.url = url.toString();
                         urlController.text = this.url;
                       });
                     },
-                    onConsoleMessage: (controller, consoleMessage) {
+                    onConsoleMessage: (controller, consoleMessage) { //debug controls
                       if (kDebugMode) {
                         print(consoleMessage);
                       }
                     },
                   ),
-                  progress < 1.0
+                  progress < 1.0 //tracks loading of the page
                       ? LinearProgressIndicator(value: progress)
                       : Container(),
                 ],

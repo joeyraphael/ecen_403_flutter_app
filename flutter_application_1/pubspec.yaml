@@ -47,6 +47,11 @@ flutter:
     - assets/lineEquipment.PNG
     - assets/grackles.jpg
     - assets/squirrel.PNG
+    - assets/AC_Unit.PNG
+    - assets/LawOfCooling.PNG
+    - assets/PowerTycoon.PNG
+    - assets/powerOutage2.jpg
+    - assets/outletImage.jpg
 #  fonts:
 #   - family: NameOfFont
 #     fonts:
