@@ -1,16 +1,5 @@
 # flutter_application_1
 
-This is an ECEN403/404 project for developing a Power Outage Education App. 
+This is an ECEN403/404 project for developing a Power Outage Education App. This subsystem includes the High School Subsystem base, developed on Flutter. 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For further questions or inqueries about this subsystem, contact Jackie Villanueva at jacquelinev648@tamu.edu
